@@ -7,19 +7,13 @@ const app = express();
 const authRoutes = require('./routes/authRoutes');
 const sweetsRoutes = require('./routes/sweetsRoutes');
 
-// Split multiple URLs if needed
+// ✅ Allow frontend origin
 const allowedOrigins = process.env.FRONTEND_URL
   ? process.env.FRONTEND_URL.split(',')
   : ['http://localhost:5173'];
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: allowedOrigins,
   credentials: true
 }));
 
