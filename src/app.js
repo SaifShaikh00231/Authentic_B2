@@ -1,13 +1,24 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
+
 const app = express();
 
 const authRoutes = require('./routes/authRoutes');
 const sweetsRoutes = require('./routes/sweetsRoutes');
 
+// Split multiple URLs if needed
+const allowedOrigins = process.env.FRONTEND_URL.split(',');
+
 app.use(cors({
-  origin: 'http://localhost:5173',  // Allow this origin
-  // You can also add other options here if needed
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
 
 app.use(express.json());
