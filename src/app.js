@@ -8,7 +8,9 @@ const authRoutes = require('./routes/authRoutes');
 const sweetsRoutes = require('./routes/sweetsRoutes');
 
 // Split multiple URLs if needed
-const allowedOrigins = process.env.FRONTEND_URL.split(',');
+const allowedOrigins = process.env.FRONTEND_URL
+  ? process.env.FRONTEND_URL.split(',')
+  : ['http://localhost:5173'];
 
 app.use(cors({
   origin: function (origin, callback) {
