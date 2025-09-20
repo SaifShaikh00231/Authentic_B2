@@ -18,7 +18,7 @@ The backend also integrates with **Cloudinary** for image uploads and includes m
 ---
 ### Admin Role Login credentials use this :
 ## email : saif@example.com
-## password  Password123
+## password : Password123
 
 ## API Endpoints
 
@@ -74,4 +74,5 @@ Test Suites: 2 passed, 2 total
 Tests:       All passed  
 Snapshots:   0 total  
 Time:        1.9 s
+
 
